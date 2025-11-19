@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ta">
+<head>
+  <meta charset="utf-8" />
+  <title>Horoscope Print</title>
+
+  <style>
+    @font-face {
+      font-family: 'NotoTamil';
+      src: url('/fonts/NotoSansTamil-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @page { size: A4; margin: 0; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 210mm;
+      height: 297mm;
+      font-family: 'NotoTamil', "Latha", serif;
+      color: #0a2340;
+    }
+
+    .sheet {
+      box-sizing: border-box;
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      background: white;
+      padding: 6mm;
+    }
+
+    /* background scanned header (optional) */
+    .scan {
+      position: absolute;
+      left: 6mm;
+      top: 6mm;
+      width: 198mm;
+      height: 102mm;
+      opacity: 0.18;
+      background-image: url('/assets/Horoscope Format.jpg');
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+    }
+
+    .title {
+      position: absolute;
+      left: 18mm;
+      top: 10mm;
+      font-size: 18pt;
+      font-weight: 700;
+    }
+
+    .field {
+      position: absolute;
+      font-size: 11pt;
+      white-space: nowrap;
+    }
+    .label {
+      color: #0a2340;
+      font-weight: 600;
+    }
+
+    .name { left: 18mm; top: 40mm; }
+    .birth { left: 18mm; top: 49mm; }
+    .place { left: 18mm; top: 58mm; }
+    .age { left: 110mm; top: 49mm; }
+    .timings { left: 110mm; top: 40mm; }
+
+    .charts {
+      position: absolute;
+      left: 18mm;
+      top: 120mm;
+      width: 174mm;
+      height: 120mm;
+      display:flex;
+      justify-content: space-between;
+    }
+
+    .chart {
+      width: 82mm;
+      height: 120mm;
+      border: 1px solid #18406b;
+      position: relative;
+    }
+
+    .chart-title {
+      position:absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 6mm;
+      font-weight:700;
+      font-size:12pt;
+    }
+
+    .rasi-grid, .navamsa-grid {
+      position: absolute;
+      left: 6mm;
+      top: 18mm;
+      width: 70mm;
+      height: 90mm;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .cell {
+      border: 1px solid #18406b;
+      font-size: 9pt;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:2px;
+      text-align:center;
+    }
+
+    .footer {
+      position:absolute;
+      left:18mm;
+      top:250mm;
+      width:174mm;
+      font-size:10pt;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="scan"></div>
+
+    <div class="title"><%= data.business_name || 'பாலமணிக் ஜோதிட சேவை' %></div>
+    <div class="field timings"><span class="label">நேரம்:</span> <%= data.timings || 'காலை 9.30 - 12.00 / மாலை 4.00 - 6.00' %></div>
+
+    <div class="field name"><span class="label">பெயர்:</span> <%= data.name || '' %></div>
+    <div class="field birth"><span class="label">பிறந்த தேதி & நேரம்:</span> <%= data.birth_date %> <%= data.birth_time %></div>
+    <div class="field place"><span class="label">பிறந்த இடம்:</span> <%= data.birth_place || '' %></div>
+    <div class="field age"><span class="label">வயது:</span> <%= data.age || '' %></div>
+
+    <div class="charts">
+      <div class="chart">
+        <div class="chart-title">இராசி</div>
+        <div class="rasi-grid">
+          <% for(let i=1;i<=12;i++){ %>
+            <div class="cell"><%= (data.rasi && data.rasi[''+i]) ? data.rasi[''+i] : '' %></div>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="chart">
+        <div class="chart-title">நவாம்சம்</div>
+        <div class="navamsa-grid">
+          <% for(let i=1;i<=12;i++){ %>
+            <div class="cell"><%= (data.navamsa && data.navamsa[''+i]) ? data.navamsa[''+i] : '' %></div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div><span class="label">லக்னம்:</span> <%= data.footer ? data.footer.lagnam : '' %> &nbsp;&nbsp;
+           <span class="label">ராகு:</span> <%= data.footer ? data.footer.ragu : '' %> &nbsp;&nbsp;
+           <span class="label">சனி:</span> <%= data.footer ? data.footer.sani : '' %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
