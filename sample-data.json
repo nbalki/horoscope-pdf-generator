@@ -1,16 +1,37 @@
 {
-  "business_name": "பாலமணிக் ஜோதிட சேவை",
+  "tamil_title": "ஸ்ரீ காஞ்சி மஹா பெரியவா துணை",
+  "business_name": "பாலமணி ஜோதிட சேவை",
+  "english_name": "Er. M. நடராஜன்",
+  "phone_numbers": "97914 - 76676",
+  "address_line1": "11, அண்ணாமலை நகர் மெயின் ரோடு,",
+  "address_line2": "(45Ft Road Patrol Bunk Opposite)",
+  "address_line3": "சாரம், புதுச்சேரி – 605 013.",
   "timings": "காலை 9.30 - 12.00 / மாலை 4.00 - 6.00",
+  
   "name": "Balakrishnan",
+  "tamil_year": "ஆனந்த",
   "birth_date": "1978-03-21",
   "birth_time": "06:45",
+  "tamil_month": "பங்குனி / 06",
   "birth_place": "Puducherry",
+  "sevvai_dosham": "இல்லை",
+  "birth_day": "செவ்வாய்",
   "age": "47",
+  "star": "பூசம்",
+  "rasi_name": "கடகம்",
+  "lagnam": "மேஷம்",
+  "dasa": "சுக்கிரன் 12 ஆண்டுகள்",
+  "current_dasa": "சுக்கிரன் - புதன்",
+  "guru": "மிதுனம்",
+  "sani": "கும்பம்",
+  "parents": "திரு. இராமன் / திருமதி. சீதா",
+  "customer_address": "123, மெயின் ஸ்ட்ரீட், புதுச்சேரி - 605 001",
+  
   "rasi": {
     "1": "",
     "2": "",
     "3": "",
-    "4": "",
+    "4": "சந்திரன்\nஇராசி",
     "5": "",
     "6": "",
     "7": "",
@@ -29,14 +50,19 @@
     "6": "",
     "7": "",
     "8": "",
-    "9": "",
+    "9": "நவாம்சம்",
     "10": "",
     "11": "",
     "12": ""
   },
-  "footer": {
-    "lagnam": "மேஷம்",
-    "ragu": "ராகு",
-    "sani": "சனி"
-  }
+  
+  "footer_lagnam": "மேஷம்",
+  "footer_guru": "மிதுனம்",
+  "footer_aayipaan": "மீனம்",
+  "footer_pathan": "விருச்சிகம்",
+  "footer_angarakan": "தனுசு",
+  "footer_sukkiran": "கும்பம்",
+  "footer_sani": "மகரம்",
+  "footer_kethu": "விருச்சிகம்",
+  "footer_chandran": "கடகம்"
 }
