@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Horoscope Print</title>
-
+  
   <style>
     @font-face {
       font-family: 'NotoTamil';
@@ -18,150 +18,279 @@
       width: 210mm;
       height: 297mm;
       font-family: 'NotoTamil', "Latha", serif;
-      color: #0a2340;
+      color: #000;
     }
-
     .sheet {
       box-sizing: border-box;
       position: relative;
       width: 210mm;
       height: 297mm;
       background: white;
-      padding: 6mm;
+      padding: 8mm;
     }
-
-    /* background scanned header (optional) */
-    .scan {
-      position: absolute;
-      left: 6mm;
-      top: 6mm;
-      width: 198mm;
-      height: 102mm;
-      opacity: 0.18;
-      background-image: url('/assets/Horoscope Format.jpg');
-      background-size: cover;
-      background-position: center;
-      pointer-events: none;
+    
+    /* Header section */
+    .header {
+      border: 2px solid #000;
+      padding: 4mm;
+      margin-bottom: 4mm;
     }
-
-    .title {
-      position: absolute;
-      left: 18mm;
-      top: 10mm;
-      font-size: 18pt;
-      font-weight: 700;
-    }
-
-    .field {
-      position: absolute;
-      font-size: 11pt;
-      white-space: nowrap;
-    }
-    .label {
-      color: #0a2340;
-      font-weight: 600;
-    }
-
-    .name { left: 18mm; top: 40mm; }
-    .birth { left: 18mm; top: 49mm; }
-    .place { left: 18mm; top: 58mm; }
-    .age { left: 110mm; top: 49mm; }
-    .timings { left: 110mm; top: 40mm; }
-
-    .charts {
-      position: absolute;
-      left: 18mm;
-      top: 120mm;
-      width: 174mm;
-      height: 120mm;
-      display:flex;
+    .header-top {
+      display: flex;
       justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3mm;
     }
-
+    .astrologer-image {
+      width: 22mm;
+      height: 30mm;
+      border: 1px solid #000;
+      background: #f0f0f0;
+    }
+    .business-info {
+      flex: 1;
+      text-align: center;
+      padding: 0 4mm;
+    }
+    .tamil-title {
+      font-size: 10pt;
+      margin-bottom: 2mm;
+    }
+    .business-name {
+      font-size: 20pt;
+      font-weight: bold;
+      margin-bottom: 2mm;
+    }
+    .english-name {
+      font-size: 11pt;
+      margin-bottom: 1mm;
+    }
+    .phone-numbers {
+      font-size: 10pt;
+    }
+    .address {
+      text-align: right;
+      font-size: 9pt;
+      line-height: 1.4;
+    }
+    .timings-row {
+      border-top: 1px solid #000;
+      padding-top: 2mm;
+      font-size: 10pt;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    /* Personal details section */
+    .details-section {
+      border: 2px solid #000;
+      padding: 3mm;
+      margin-bottom: 4mm;
+    }
+    .details-row {
+      display: flex;
+      margin-bottom: 2mm;
+      font-size: 10pt;
+    }
+    .details-label {
+      font-weight: bold;
+      min-width: 40mm;
+    }
+    .details-value {
+      flex: 1;
+    }
+    
+    /* Charts section */
+    .charts {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4mm;
+    }
     .chart {
-      width: 82mm;
-      height: 120mm;
-      border: 1px solid #18406b;
-      position: relative;
+      width: 48%;
+      border: 2px solid #000;
+      padding: 3mm;
     }
-
     .chart-title {
-      position:absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 6mm;
-      font-weight:700;
-      font-size:12pt;
+      text-align: center;
+      font-weight: bold;
+      font-size: 12pt;
+      margin-bottom: 3mm;
     }
-
-    .rasi-grid, .navamsa-grid {
-      position: absolute;
-      left: 6mm;
-      top: 18mm;
-      width: 70mm;
-      height: 90mm;
+    .chart-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(4, 1fr);
-      gap: 2px;
+      gap: 0;
+      border: 1px solid #000;
+      min-height: 80mm;
     }
-    .cell {
-      border: 1px solid #18406b;
+    .chart-cell {
+      border: 1px solid #000;
+      padding: 2mm;
       font-size: 9pt;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:2px;
-      text-align:center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 20mm;
     }
-
-    .footer {
-      position:absolute;
-      left:18mm;
-      top:250mm;
-      width:174mm;
-      font-size:10pt;
+    
+    /* Footer section */
+    .footer-section {
+      border: 2px solid #000;
+      padding: 3mm;
     }
-
+    .footer-title {
+      font-weight: bold;
+      margin-bottom: 2mm;
+      font-size: 10pt;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3mm;
+      font-size: 9pt;
+    }
+    .footer-item {
+      display: flex;
+    }
+    .footer-label {
+      font-weight: bold;
+      margin-right: 1mm;
+    }
+    .signature {
+      margin-top: 3mm;
+      font-size: 9pt;
+    }
   </style>
 </head>
 <body>
   <div class="sheet">
-    <div class="scan"></div>
-
-    <div class="title"><%= data.business_name || 'பாலமணிக் ஜோதிட சேவை' %></div>
-    <div class="field timings"><span class="label">நேரம்:</span> <%= data.timings || 'காலை 9.30 - 12.00 / மாலை 4.00 - 6.00' %></div>
-
-    <div class="field name"><span class="label">பெயர்:</span> <%= data.name || '' %></div>
-    <div class="field birth"><span class="label">பிறந்த தேதி & நேரம்:</span> <%= data.birth_date %> <%= data.birth_time %></div>
-    <div class="field place"><span class="label">பிறந்த இடம்:</span> <%= data.birth_place || '' %></div>
-    <div class="field age"><span class="label">வயது:</span> <%= data.age || '' %></div>
-
+    <!-- Header -->
+    <div class="header">
+      <div class="header-top">
+        <div class="astrologer-image">
+          <!-- Placeholder for astrologer image -->
+        </div>
+        <div class="business-info">
+          <div class="tamil-title"><%= data.tamil_title || 'ஸ்ரீ காஞ்சி மஹா பெரியவா துணை' %></div>
+          <div class="business-name"><%= data.business_name || 'பாலமணி ஜோதிட சேவை' %></div>
+          <div class="english-name"><%= data.english_name || 'Er. M. நடராஜன்' %></div>
+          <div class="phone-numbers"><%= data.phone_numbers || '97914 - 76676' %></div>
+        </div>
+        <div class="address">
+          <%= data.address_line1 || '11, அண்ணாமலை நகர் மெயின் ரோடு,' %><br>
+          <%= data.address_line2 || '(45Ft Road Patrol Bunk Opposite)' %><br>
+          <%= data.address_line3 || 'சாரம், புதுச்சேரி – 605 013.' %>
+        </div>
+      </div>
+      <div class="timings-row">
+        சேவை விருப்பரை: <%= data.timings || 'காலை 9.30 - 12.00 / மாலை 4.00 - 6.00' %>
+      </div>
+    </div>
+    
+    <!-- Personal Details -->
+    <div class="details-section">
+      <div class="details-row">
+        <div class="details-label">பெயர்:</div>
+        <div class="details-value"><%= data.name || '' %></div>
+        <div class="details-label">தமிழ் வருடம்:</div>
+        <div class="details-value"><%= data.tamil_year || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">பிறந்த தேதி & நேரம்:</div>
+        <div class="details-value"><%= data.birth_date || '' %> <%= data.birth_time || '' %></div>
+        <div class="details-label">மாதம் / தேதி:</div>
+        <div class="details-value"><%= data.tamil_month || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">பிறந்த இடம்:</div>
+        <div class="details-value"><%= data.birth_place || '' %></div>
+        <div class="details-label">சேவ்வாய் தோஷம்:</div>
+        <div class="details-value"><%= data.sevvai_dosham || 'உண்டு / இல்லை' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">பிறந்த கிழமை:</div>
+        <div class="details-value"><%= data.birth_day || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">வயது:</div>
+        <div class="details-value"><%= data.age || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">ஜென்ம நட்சத்திரம்:</div>
+        <div class="details-value"><%= data.star || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">ஜென்ம ராசி:</div>
+        <div class="details-value"><%= data.rasi_name || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">ஜென்ம லக்னம்:</div>
+        <div class="details-value"><%= data.lagnam || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">இருப்பு திசை:</div>
+        <div class="details-value"><%= data.dasa || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">தற்கால திசை:</div>
+        <div class="details-value"><%= data.current_dasa || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">கோசார குரு:</div>
+        <div class="details-value"><%= data.guru || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">சனி:</div>
+        <div class="details-value"><%= data.sani || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">பெற்றோர் விபரம்:</div>
+        <div class="details-value"><%= data.parents || '' %></div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">விலாசம்:</div>
+        <div class="details-value"><%= data.customer_address || '' %></div>
+      </div>
+    </div>
+    
+    <!-- Charts -->
     <div class="charts">
       <div class="chart">
         <div class="chart-title">இராசி</div>
-        <div class="rasi-grid">
-          <% for(let i=1;i<=12;i++){ %>
-            <div class="cell"><%= (data.rasi && data.rasi[''+i]) ? data.rasi[''+i] : '' %></div>
+        <div class="chart-grid">
+          <% for(let i=1; i<=12; i++) { %>
+            <div class="chart-cell"><%= (data.rasi && data.rasi[''+i]) ? data.rasi[''+i] : '' %></div>
           <% } %>
         </div>
       </div>
-
       <div class="chart">
         <div class="chart-title">நவாம்சம்</div>
-        <div class="navamsa-grid">
-          <% for(let i=1;i<=12;i++){ %>
-            <div class="cell"><%= (data.navamsa && data.navamsa[''+i]) ? data.navamsa[''+i] : '' %></div>
+        <div class="chart-grid">
+          <% for(let i=1; i<=12; i++) { %>
+            <div class="chart-cell"><%= (data.navamsa && data.navamsa[''+i]) ? data.navamsa[''+i] : '' %></div>
           <% } %>
         </div>
       </div>
     </div>
-
-    <div class="footer">
-      <div><span class="label">லக்னம்:</span> <%= data.footer ? data.footer.lagnam : '' %> &nbsp;&nbsp;
-           <span class="label">ராகு:</span> <%= data.footer ? data.footer.ragu : '' %> &nbsp;&nbsp;
-           <span class="label">சனி:</span> <%= data.footer ? data.footer.sani : '' %>
+    
+    <!-- Footer Details -->
+    <div class="footer-section">
+      <div class="footer-title">திருகண சாரங்கள்:</div>
+      <div class="footer-grid">
+        <div class="footer-item"><span class="footer-label">லக்னம்:</span> <%= data.footer_lagnam || '' %></div>
+        <div class="footer-item"><span class="footer-label">குரு:</span> <%= data.footer_guru || '' %></div>
+        <div class="footer-item"><span class="footer-label">ஆயிபான்:</span> <%= data.footer_aayipaan || '' %></div>
+        <div class="footer-item"><span class="footer-label">பதன்:</span> <%= data.footer_pathan || '' %></div>
+        <div class="footer-item"><span class="footer-label">அங்காரகன்:</span> <%= data.footer_angarakan || '' %></div>
+        <div class="footer-item"><span class="footer-label">சுக்கிரன்:</span> <%= data.footer_sukkiran || '' %></div>
+        <div class="footer-item"><span class="footer-label">சனி:</span> <%= data.footer_sani || '' %></div>
+        <div class="footer-item"><span class="footer-label">கேது:</span> <%= data.footer_kethu || '' %></div>
+        <div class="footer-item"><span class="footer-label">சந்திரன்:</span> <%= data.footer_chandran || '' %></div>
       </div>
+      <div class="signature"></div>
     </div>
   </div>
 </body>
